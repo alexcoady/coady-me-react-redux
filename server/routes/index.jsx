@@ -1,15 +1,13 @@
 // NPM dependencies
-import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 
-// Shared app dependencies
-import routes from './../shared/routes';
+// Shared dependencies
+import routes from 'routes';
 
-const app = express();
-
-app.use((req, res) => {
+// Module defintion
+export default (req, res) => {
 
   match({ location: req.url, routes }, (err, redirectLocation, renderProps) => {
 
@@ -33,21 +31,18 @@ app.use((req, res) => {
             <title>Alex Coady / Senior front-end developer</title>
           </head>
           <body>
-            ${appHTML}
+            <div id="app">${appHTML}</div>
+            <script src="/assets/scripts/bundle.js"></script>
           </body>
         </html>
       `);
 
     } else {
 
-      res.status(404).send('Not found');
+      res.status(404).send('Not found in the router config');
 
     }
 
   });
 
-})
-
-app.listen(3000, () => {
-  console.log('Server started, bitches');
-});
+}
