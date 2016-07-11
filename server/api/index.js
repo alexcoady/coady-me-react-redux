@@ -29,11 +29,7 @@ router.get('/projects', (req, res) => {
 
   let promise = getAll();
 
-  promise.then((response) => {
-
-    res.json(response);
-
-  });
+  promise.then(response => res.json(response));
 
 });
 
@@ -41,15 +37,8 @@ router.post('/projects', urlencoded({extended: true}), (req, res, done) => {
 
   let promise = addNew(req.body);
 
-  promise.then((response) => {
-
-    res.status(200).send(response);
-
-  }, (response) => {
-
-    res.status(500).send(response);
-
-  });
+  promise.then(response => res.status(200).send(response));
+  promise.catch(response => res.status(500).send(response));
 
 })
 

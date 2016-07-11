@@ -2,12 +2,18 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
 
 // Shared dependencies
 import routes from 'routes';
+import * as reducers from 'reducers';
 
 // Module defintion
 export default (req, res) => {
+
+  const reducer = combineReducers(reducers);
+  const store = createStore(reducer);
 
   match({ location: req.url, routes }, (err, redirectLocation, renderProps) => {
 
@@ -21,7 +27,13 @@ export default (req, res) => {
 
     } else if (renderProps) {
 
-      const appHTML = renderToString(<RouterContext {...renderProps} />);
+      const appHTML = renderToString(
+        <Provider store={store}>
+          <RouterContext {...renderProps} />
+        </Provider>
+      );
+
+      const state = store.getState();
 
       res.status(200).send(`
         <!DOCTYPE html>
@@ -29,6 +41,9 @@ export default (req, res) => {
           <head>
             <meta charset="utf-8">
             <title>Alex Coady / Senior front-end developer</title>
+            <script type="application/javascript">
+              window.__INITIAL_STATE__ = ${JSON.stringify(state)};
+            </script>
           </head>
           <body>
             <div id="app">${appHTML}</div>
