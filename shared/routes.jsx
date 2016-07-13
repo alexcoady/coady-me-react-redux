@@ -1,15 +1,19 @@
 // NPM dependencies
 import React from 'react';
-import { Route } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 
 // App dependencies
 import App from './components';
 import About from './components/about';
 import Contact from './components/contact';
+import Projects from './components/projects';
 
 export default (
   <Route name="app" component={App} path="/">
+    <IndexRoute component={Projects} />
     <Route name="about" component={About} path="/about"></Route>
     <Route name="contact" component={Contact} path="/contact"></Route>
   </Route>
 );
+
+const lol = `<Route name="workItem" component={ProjectItem} path="/work/:workSlug"></Route>`;
