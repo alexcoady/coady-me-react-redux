@@ -12,7 +12,6 @@ const router = Router();
 
 router.get('/', (req, res, next) => {
 
-  console.log('POW!');
   res.status(200).send('POW')
 
 })

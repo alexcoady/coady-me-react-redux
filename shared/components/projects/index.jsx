@@ -1,7 +1,6 @@
 // NPM depedencies
 import React from 'react';
 import { connect } from 'react-redux';
-import Immutable from 'immutable';
 
 // App depedencies
 import ProjectSummary from './../project-summary';
@@ -11,8 +10,6 @@ class ProjectsView extends React.Component {
 
   render () {
 
-    console.log(`ProjectsView->render()`, this.props)
-
     let projects = this.props.projects.map(project => {
       return <ProjectSummary key={project.get('_id')} data={project} />
     });
@@ -20,6 +17,7 @@ class ProjectsView extends React.Component {
     return (
       <div>
         <h2>Projects</h2>
+        <p>The following are my projects....</p>
         {projects}
       </div>
     );
@@ -27,12 +25,11 @@ class ProjectsView extends React.Component {
 
   componentDidMount () {
 
-    console.log(`ProjectsView->componentDidMount()`, this.props.projects.size)
-
     if (!this.props.projects.size) {
       this.props.getProjects();
     }
   }
+
 }
 
 ProjectsView.needs = [
@@ -55,4 +52,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectsView);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProjectsView);

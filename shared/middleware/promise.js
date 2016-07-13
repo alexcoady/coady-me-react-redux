@@ -2,8 +2,6 @@ export default function promiseMiddleware () {
 
   return next => action => {
 
-    console.log(`hitting promiseMiddleware`);
-
     const { promise, type, ...rest } = action;
 
     if (!promise) return next(action);
@@ -14,8 +12,6 @@ export default function promiseMiddleware () {
     const FAILURE  = `${type}_FAILURE`;
 
     next({ ...rest, type: REQUEST });
-
-    console.log(`MAKING REQUEST! ${SUCCESS}`);
 
     return promise
       .then(res => {
