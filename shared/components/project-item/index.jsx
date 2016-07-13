@@ -1,9 +1,11 @@
 // NPM depedencies
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import Immutable from 'immutable';
 
 // App depedencies
+import { getBySlug } from './actions';
 
 class ProjectItem extends React.Component {
 
@@ -12,9 +14,15 @@ class ProjectItem extends React.Component {
     return (
       <div>
         <h2>Project item</h2>
-        { JSON.stringify(this.props) }
       </div>
     );
+  }
+
+  componentDidMount () {
+
+    const { workSlug } = this.props.routeParams;
+    this.props.getBySlug(workSlug);
+
   }
 
 }
@@ -27,9 +35,4 @@ const mapStateToProps = state => {
   return {};
 };
 
-const mapDispatchToProps = dispatch => {
-
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectItem);
+export default connect(mapStateToProps, { getBySlug })(ProjectItem);

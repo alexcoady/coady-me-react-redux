@@ -43,16 +43,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-
-  return {
-    getAll: () => {
-      dispatch(getAll());
-    }
-  };
-};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { getAll }
 )(ProjectList);
