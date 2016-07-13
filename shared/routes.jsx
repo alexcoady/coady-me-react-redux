@@ -6,11 +6,11 @@ import { Route, IndexRoute } from 'react-router';
 import App from './components';
 import About from './components/about';
 import Contact from './components/contact';
-import Projects from './components/projects';
+import ProjectList from './components/project-list';
 
 export default (
   <Route name="app" component={App} path="/">
-    <IndexRoute component={Projects} />
+    <IndexRoute component={ProjectList} />
     <Route name="about" component={About} path="/about"></Route>
     <Route name="contact" component={Contact} path="/contact"></Route>
   </Route>

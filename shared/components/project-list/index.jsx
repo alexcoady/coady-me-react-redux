@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 
 // App depedencies
 import ProjectSummary from './../project-summary';
-import { getProjects } from './actions';
+import { getAll } from './actions';
 
-class ProjectsView extends React.Component {
+class ProjectList extends React.Component {
 
   render () {
 
@@ -16,7 +16,7 @@ class ProjectsView extends React.Component {
 
     return (
       <div>
-        <h2>Projects</h2>
+        <h2>ProjectList</h2>
         <p>The following are my projects....</p>
         {projects}
       </div>
@@ -26,14 +26,14 @@ class ProjectsView extends React.Component {
   componentDidMount () {
 
     if (!this.props.projects.size) {
-      this.props.getProjects();
+      this.props.getAll();
     }
   }
 
 }
 
-ProjectsView.needs = [
-  getProjects
+ProjectList.needs = [
+  getAll
 ];
 
 const mapStateToProps = state => {
@@ -46,8 +46,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 
   return {
-    getProjects: () => {
-      dispatch(getProjects());
+    getAll: () => {
+      dispatch(getAll());
     }
   };
 };
@@ -55,4 +55,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProjectsView);
+)(ProjectList);

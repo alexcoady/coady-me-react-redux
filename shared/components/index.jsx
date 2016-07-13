@@ -4,7 +4,7 @@ import React from 'react';
 // App depedencies
 import Header from './header';
 
-class AppView extends React.Component {
+class App extends React.Component {
 
   render () {
 
@@ -18,4 +18,4 @@ class AppView extends React.Component {
   }
 }
 
-export default AppView;
+export default App;

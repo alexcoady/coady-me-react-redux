@@ -2,4 +2,4 @@
 import { combineReducers } from 'redux';
 
 // Shared dependencies
-export { default as projects } from './components/projects/reducers';
+export { default as projects } from './components/project-list/reducers';

@@ -1,12 +1,12 @@
 // NPM dependencies
 import axios from 'axios';
 
-// export function getProjects () {
+// export function getProjectList () {
 //
-//   console.log(`getProjects`);
+//   console.log(`getProjectList`);
 //
 //   return {
-//     type: GET_PROJECTS,
+//     type: GET_ALL_PROJECTS,
 //     promise: axios.get(API_ROOT)
 //   };
 // }

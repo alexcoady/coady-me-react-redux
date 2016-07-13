@@ -5,7 +5,7 @@ import Immutable from 'immutable';
 
 // App depedencies
 
-class ProjectItemView extends React.Component {
+class ProjectItem extends React.Component {
 
   render () {
 
@@ -19,7 +19,7 @@ class ProjectItemView extends React.Component {
 
 }
 
-ProjectItemView.needs = [
+ProjectItem.needs = [
 ];
 
 const mapStateToProps = state => {
@@ -32,4 +32,4 @@ const mapDispatchToProps = dispatch => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectItemView);
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectItem);
