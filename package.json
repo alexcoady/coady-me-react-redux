@@ -21,14 +21,18 @@
     "babel-preset-react": "^6.11.1",
     "babel-register": "^6.9.0",
     "body-parser": "^1.15.2",
+    "deep-freeze": "0.0.1",
     "express": "^4.14.0",
     "immutable": "^3.8.1",
+    "lodash": "^4.13.1",
     "mongoose": "^4.5.3",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.5.2",
+    "react-router-redux": "^4.0.5",
     "redux": "^3.5.2",
+    "redux-logger": "^2.6.1",
     "webpack-dev-server": "^1.14.1"
   },
   "devDependencies": {

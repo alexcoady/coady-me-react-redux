@@ -8,9 +8,7 @@ class ProjectSummaryView extends React.Component {
 
   render () {
 
-    const project = this.props.data;
-    const name = project.get('name');
-    const slug = project.get('slug');
+    const { name, slug } = this.props.data;
 
     return (
       <article className="ProjectSummary">

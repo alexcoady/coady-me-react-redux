@@ -4,14 +4,15 @@ import { connect } from 'react-redux';
 
 // App depedencies
 import ProjectSummary from './../project-summary';
-import { getAll } from './actions';
+import { getAll as fetchAll } from './actions';
+import { getAll } from './reducers';
 
 class ProjectList extends React.Component {
 
   render () {
 
     let projects = this.props.projects.map(project => {
-      return <ProjectSummary key={project.get('_id')} data={project} />
+      return <ProjectSummary key={project._id} data={project} />
     });
 
     return (
@@ -26,24 +27,24 @@ class ProjectList extends React.Component {
   componentDidMount () {
 
     if (!this.props.projects.size) {
-      this.props.getAll();
+      this.props.fetchAll();
     }
   }
 
 }
 
 ProjectList.needs = [
-  getAll
+  fetchAll
 ];
 
 const mapStateToProps = state => {
 
   return {
-    projects: state.projects
+    projects: getAll(state.projects)
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getAll }
+  { fetchAll }
 )(ProjectList);
