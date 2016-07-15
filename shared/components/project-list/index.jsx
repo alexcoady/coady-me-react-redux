@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 // App depedencies
 import ProjectSummary from './../project-summary';
-import { getAll as fetchAll } from './actions';
-import { getAll } from './reducers';
+import { fetchAll } from './actions';
+import { getAllProjects } from './../../reducers';
 
 class ProjectList extends React.Component {
 
@@ -26,7 +26,7 @@ class ProjectList extends React.Component {
 
   componentDidMount () {
 
-    if (!this.props.projects.size) {
+    if (!this.props.projects.length) {
       this.props.fetchAll();
     }
   }
@@ -40,7 +40,7 @@ ProjectList.needs = [
 const mapStateToProps = state => {
 
   return {
-    projects: getAll(state.projects)
+    projects: getAllProjects(state)
   };
 };
 

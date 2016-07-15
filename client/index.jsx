@@ -9,7 +9,7 @@ import reduxLogger from 'redux-logger';
 
 // Shared app dependencies
 import routes from './../shared/routes';
-import * as reducers from './../shared/reducers';
+import reducers from './../shared/reducers';
 import promiseMiddleware from './../shared/middleware/promise';
 
 // Import styles

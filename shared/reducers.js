@@ -1,5 +1,12 @@
 // NPM dependencies
-import { combineReducers } from 'redux';
+import projects, * as ProjectReducer from './components/project-list/reducers';
 
-// Shared dependencies
-export { default as projects } from './components/project-list/reducers';
+export default {
+  projects
+};
+
+export const getAllProjects = (state) => {
+
+  return ProjectReducer.getAll(state.projects);
+
+}

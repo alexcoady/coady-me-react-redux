@@ -4,7 +4,7 @@ import _ from 'lodash';
 import dp from 'deep-freeze';
 
 // Module dependencies
-import { GET_ALL_PROJECTS } from './actions';
+import { FETCH_ALL_PROJECTS } from './actions';
 
 const initialBySlugState = {};
 dp(initialBySlugState);
@@ -12,7 +12,7 @@ dp(initialBySlugState);
 export const bySlug = (state = initialBySlugState, action) => {
 
   switch (action.type) {
-    case GET_ALL_PROJECTS: {
+    case FETCH_ALL_PROJECTS: {
       let clone = { ...state };
       action.res.data.forEach(project => {
         clone[project.slug] = project;
@@ -30,7 +30,7 @@ dp(initialAllSlugsState);
 export const allSlugs = (state = initialAllSlugsState, action) => {
 
   switch (action.type) {
-    case GET_ALL_PROJECTS: {
+    case FETCH_ALL_PROJECTS: {
       let clone = state.concat(action.res.data.map(project => project.slug));
       // Removes duplicates
       return _.uniq(clone);

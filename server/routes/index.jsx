@@ -7,14 +7,14 @@ import { Provider } from 'react-redux';
 
 // Shared dependencies
 import routes from 'routes';
-import * as reducers from 'reducers';
+import reducers from 'reducers';
 import promiseMiddleware from 'middleware/promise';
 import fetchComponentData from 'helpers/fetchComponentData';
 
 // Module defintion
 export default (req, res) => {
 
-  const reducer = combineReducers(reducers);
+  const reducer = combineReducers({ ...reducers });
   const store = createStore(reducer, applyMiddleware(promiseMiddleware));
 
   match({ location: req.url, routes }, (err, redirectLocation, renderProps) => {
