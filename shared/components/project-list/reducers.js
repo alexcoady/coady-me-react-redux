@@ -33,7 +33,6 @@ dp(initialAllSlugsState);
 export const allSlugs = (state = initialAllSlugsState, action) => {
 
   switch (action.type) {
-    case FETCH_PROJECT_BY_SLUG:
     case FETCH_ALL_PROJECTS: {
       let projects = [].concat(action.res.data);
       let clone = state.concat(projects.map(project => project.slug));

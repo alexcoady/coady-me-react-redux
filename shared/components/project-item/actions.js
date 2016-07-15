@@ -6,6 +6,10 @@ const API_ROOT = `http://localhost:8080/api/projects/`;
 
 export const fetchBySlug = slug => {
 
+  if (typeof slug === "object") {
+    slug = slug.workSlug;
+  }
+
   console.log(`fetchBySlug (${slug})`);
 
   return {

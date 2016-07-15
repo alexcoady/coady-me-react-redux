@@ -39,14 +39,15 @@ class ProjectItem extends React.Component {
 }
 
 ProjectItem.needs = [
+  fetchBySlug
 ];
 
 const mapStateToProps = (state, ownProps) => {
 
-  console.log('called', ownProps.routeParams.workSlug);
+  const slug = ownProps.routeParams.workSlug;
 
   return {
-    project: getProjectBySlug(state, ownProps.routeParams.workSlug)
+    project: getProjectBySlug(state, slug)
   };
 };
 

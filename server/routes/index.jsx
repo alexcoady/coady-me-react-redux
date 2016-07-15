@@ -57,6 +57,8 @@ export default (req, res) => {
         `;
       }
 
+      console.log(renderProps.params);
+
       fetchComponentData(store.dispatch, renderProps.components, renderProps.params)
         .then(renderView)
         .then(html => res.end(html))
