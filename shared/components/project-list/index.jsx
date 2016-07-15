@@ -17,7 +17,7 @@ class ProjectList extends React.Component {
 
     return (
       <div>
-        <h2>ProjectList</h2>
+        <h2>Projects</h2>
         <p>The following are my projects....</p>
         {projects}
       </div>

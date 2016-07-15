@@ -5,6 +5,8 @@ import { Project } from './index';
 
 export const getBySlug = (slug) => {
 
+  return Project.find({ slug });
+
 };
 
 export const getAll = () => {

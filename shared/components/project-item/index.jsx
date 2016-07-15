@@ -4,23 +4,35 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 // App depedencies
-import { getBySlug } from './actions';
+import { fetchBySlug } from './actions';
+import { getProjectBySlug } from './../../reducers';
 
 class ProjectItem extends React.Component {
 
   render () {
 
+    if (!this.props.project) {
+      return (
+        <div>
+          <h2>LOADING</h2>
+        </div>);
+    }
+
+    const { name, slug } = this.props.project;
+
     return (
       <div>
-        <h2>Project item</h2>
+        <h2>{ name }</h2>
+        <p>Slug: { slug }</p>
       </div>
     );
   }
 
   componentDidMount () {
 
-    const { workSlug } = this.props.routeParams;
-    this.props.getBySlug(workSlug);
+    if (!this.props.project) {
+      this.props.fetchBySlug(this.props.routeParams.workSlug);
+    }
 
   }
 
@@ -29,9 +41,13 @@ class ProjectItem extends React.Component {
 ProjectItem.needs = [
 ];
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
 
-  return {};
+  console.log('called', ownProps.routeParams.workSlug);
+
+  return {
+    project: getProjectBySlug(state, ownProps.routeParams.workSlug)
+  };
 };
 
-export default connect(mapStateToProps, { getBySlug })(ProjectItem);
+export default connect(mapStateToProps, { fetchBySlug })(ProjectItem);

@@ -18,9 +18,11 @@ router.get('/', (req, res, next) => {
 
 router.get('/projects/:projectSlug', (req, res) => {
 
-  res.json({
-    project: true
-  })
+  let slug = req.params.projectSlug;
+
+  let promise = getBySlug(slug);
+  promise.then(response => res.json(response));
+
 
 });
 

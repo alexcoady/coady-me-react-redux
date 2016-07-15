@@ -6,7 +6,9 @@ export default {
 };
 
 export const getAllProjects = (state) => {
-
   return ProjectReducer.getAll(state.projects);
+}
 
+export const getProjectBySlug = (state, slug) => {
+  return ProjectReducer.getBySlug(state.projects, slug);
 }
