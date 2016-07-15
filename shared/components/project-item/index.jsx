@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 // App depedencies
-import { fetchBySlug } from './actions';
+import { fetchByParams, fetchBySlug } from './actions';
 import { getProjectBySlug } from './../../reducers';
 
 class ProjectItem extends React.Component {
@@ -39,7 +39,7 @@ class ProjectItem extends React.Component {
 }
 
 ProjectItem.needs = [
-  fetchBySlug
+  fetchByParams
 ];
 
 const mapStateToProps = (state, ownProps) => {
